@@ -1,0 +1,23 @@
+<%= simple_form_for [restaurant, review] do |f| %>
+  <% if review.errors.any? %>
+    <div class="errors-container">
+      <ul>
+        <% review.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <p>Review for <%= restaurant.name %></p>
+    <%= f.input :content %>
+  </div>
+  <div class="form-group">
+    <%= f.input :rating %>
+  </div>
+  <div>
+    <%= f.submit class: "btn btn-primary" %>
+  </div>
+
+<% end %>

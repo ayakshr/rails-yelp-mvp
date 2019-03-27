@@ -1,0 +1,20 @@
+<div class="my-container">
+
+  <h1>My list of restaurants</h1>
+  <% @restaurants.each do |restaurant| %>
+    <div class="card-white">
+      <h2><%= restaurant.name %></h2>
+      <p>Address:&nbsp; <%= restaurant.address %></p>
+      <p>Category: <%= restaurant.category.capitalize %></p>
+      <div class="btn btn-light">
+        <%= link_to "details", restaurant_path(restaurant) %>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="bottom-link">
+    <% add_mark = "+" %>
+    <%= link_to "#{add_mark} Add a new restaurant", new_restaurant_path %>
+  </div>
+
+</div>

@@ -1,0 +1,31 @@
+<div class="my-container">
+
+  <h1><%= @restaurant.name %></h1>
+
+  <div class="card-white">
+    <h2>Restaurant info</h2>
+    <p>Address:&nbsp; <%= @restaurant.address %></p>
+    <p>Phone:&nbsp;&nbsp;&nbsp;&nbsp; <%= @restaurant.phone_number %></p>
+    <p>Category: <%= @restaurant.category.capitalize %></p>
+    <div class="btn btn-light">
+      <%= link_to "edit", edit_restaurant_path(@restaurant) %>
+    </div>
+    <div class="btn btn-light">
+      <%= link_to "add review", new_restaurant_review_path(@restaurant) %>
+    </div>
+  </div>
+
+  <div class="card-white">
+    <h2>Reviews</h2>
+    <% reviews = Review.where(restaurant_id: @restaurant.id) %>
+    <% reviews.each do |review| %>
+    <p><%= '☆' * review.rating %>　<%= review.content %></p>
+    <p></p>
+    <% end %>
+  </div>
+
+  <div class="bottom-link">
+    <%= link_to 'back to list', restaurants_path %>
+  </div>
+
+</div>
